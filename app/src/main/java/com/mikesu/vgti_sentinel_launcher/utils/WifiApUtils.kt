@@ -46,7 +46,8 @@ private val wifiApConfiguration: WifiConfiguration
     get() {
         val conf = WifiConfiguration()
         conf.SSID = "VSGS"
-        conf.preSharedKey = "skylineR34"
+        conf.preSharedKey = "1411"
+        conf.hiddenSSID = true
         conf.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED)
         conf.allowedProtocols.set(WifiConfiguration.Protocol.RSN)
         conf.allowedProtocols.set(WifiConfiguration.Protocol.WPA)
