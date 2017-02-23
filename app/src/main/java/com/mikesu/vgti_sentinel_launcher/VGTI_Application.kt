@@ -12,7 +12,7 @@ import android.content.Intent
 class VGTI_Application : Application() {
 
     companion object {
-        val CHECK_INTERVAL_IN_MILLIS = 10000L // it's always forced up to 60 sec, read documentation about setRepeating
+        val CHECK_INTERVAL_IN_MILLIS = 60000L // it's always forced up to 60 sec, read documentation about setRepeating
         val REQUEST_CODE = 17
     }
 
