@@ -46,7 +46,7 @@ private val wifiApConfiguration: WifiConfiguration
     get() {
         val conf = WifiConfiguration()
         conf.SSID = "VSGS"
-        conf.preSharedKey = "1411"
+        conf.preSharedKey = "golf5GTI"
         conf.hiddenSSID = true
         conf.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED)
         conf.allowedProtocols.set(WifiConfiguration.Protocol.RSN)
