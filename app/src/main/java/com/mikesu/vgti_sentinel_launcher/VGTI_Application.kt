@@ -18,15 +18,32 @@ class VGTI_Application : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        (applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager).setInexactRepeating(
+        val receiverPendingIntent = getReceiverPendingIntent()
+
+        cancelPreviousAlarms(receiverPendingIntent)
+        addNewAlarm(receiverPendingIntent)
+    }
+
+    private fun getReceiverPendingIntent(): PendingIntent? {
+        return PendingIntent.getBroadcast(
+                applicationContext,
+                REQUEST_CODE,
+                Intent(applicationContext, VGTI_Receiver::class.java),
+                PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+
+    fun cancelPreviousAlarms(pendingIntent: PendingIntent?) {
+        if (pendingIntent != null) {
+            (getSystemService(Context.ALARM_SERVICE) as AlarmManager).cancel(pendingIntent)
+        }
+    }
+
+    private fun addNewAlarm(receiverPendingIntent: PendingIntent?) {
+        (getSystemService(Context.ALARM_SERVICE) as AlarmManager).setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
                 System.currentTimeMillis(),
                 CHECK_INTERVAL_IN_MILLIS,
-                PendingIntent.getBroadcast(
-                        applicationContext,
-                        REQUEST_CODE,
-                        Intent(applicationContext, VGTI_Receiver::class.java),
-                        PendingIntent.FLAG_UPDATE_CURRENT)
+                receiverPendingIntent
         )
     }
 }

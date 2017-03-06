@@ -20,5 +20,7 @@ class WakeUpService : IntentService(WakeUpService::class.java.simpleName) {
         if (!isWifiApOn(applicationContext)) {
             setWifiApState(applicationContext, true)
         }
+
+        stopSelf()
     }
 }

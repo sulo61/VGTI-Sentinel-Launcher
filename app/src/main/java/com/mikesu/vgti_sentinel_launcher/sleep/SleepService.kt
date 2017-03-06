@@ -20,5 +20,7 @@ class SleepService : IntentService(SleepService::class.java.simpleName) {
         if (isWifiApOn(applicationContext)) {
             setWifiApState(applicationContext, false)
         }
+
+        stopSelf()
     }
 }
